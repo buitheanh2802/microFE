@@ -1,0 +1,14 @@
+{
+  "name": "micro-frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/buitheanh2802/microFE.git",
+  "author": "buitheanh201 <theanhbui345@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "scripts": {
+    
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+       "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "module": "ESNext",
+        "target": "ES2020",
+        "moduleResolution": "Node",
+        "noImplicitAny": false,
+        "noUnusedLocals": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedParameters": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "paths": {},
+        "outDir": "build",
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "lib": ["ESNext", "Dom", "DOM.Iterable"],
+        "resolveJsonModule": true
+    },
+    "include": ["./src"],
+    "exclude": [
+        "node_modules"
+    ]
+}

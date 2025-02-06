@@ -1,0 +1,42 @@
+{
+	"sm": {
+		"scope": "scss",
+		"prefix": "sm",
+		"body": [
+			"@include sm {$1};",
+		],
+		"description": "Log output to console"
+	},
+	"md": {
+		"scope": "scss",
+		"prefix": "md",
+		"body": [
+			"@include md {$1};",
+		],
+		"description": "Log output to console"
+	},
+	"lg": {
+		"scope": "scss",
+		"prefix": "lg",
+		"body": [
+			"@include lg {$1};",
+		],
+		"description": "Log output to console"
+	},
+	"xl": {
+		"scope": "scss",
+		"prefix": "xl",
+		"body": [
+			"@include xl {$1};",
+		],
+		"description": "Log output to console"
+	},
+	"ie": {
+		"scope": "scss",
+		"prefix": "ie",
+		"body": [
+			"@include ie {$1};",
+		],
+		"description": "Log output to console"
+	}
+}

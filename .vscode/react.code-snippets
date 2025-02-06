@@ -1,0 +1,22 @@
+{
+    "React with typescript function components": {
+        "prefix": "rsct",
+        "description": "Tạo ra cấu trúc typescript với function components",
+        "scope": "typescriptreact",
+        "body": [
+            "import React from 'react';",
+            "",
+            "type Props = {};",
+            "",
+            "const ${1:$TM_FILENAME_BASE}: React.FC<Props> = (props): React.ReactNode => {",
+            "    return (",
+            "        <React.Fragment>",
+            "",
+            "        </React.Fragment>",
+            "    )",
+            "};",
+            "",
+            "export default ${1:$TM_FILENAME_BASE};"
+        ]
+    }
+}
