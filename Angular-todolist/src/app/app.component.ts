@@ -10,7 +10,8 @@ import { v4 as uuid } from "uuid";
     imports: [
         TodoItemComponent,
         SearchItemComponent,
-        NgFor
+        NgFor,
+        NgIf
     ],
     templateUrl: './app.component.html',
 })
@@ -29,7 +30,7 @@ export class AppComponent {
         },
     ];
     
-    OnContentsChange(event: Event): void{
+    OnContentsCreateChange(event: Event): void{
       const value = (event.target as HTMLInputElement).value;
       this.TodoContents = value;
     }
@@ -41,6 +42,10 @@ export class AppComponent {
         id: uuid()
       })
       this.TodoContents = null;
+    }
+
+    OnEditTodo(content: string){
+      console.log(content);
     }
 
 }
