@@ -14,6 +14,7 @@ import { v4 as uuid } from "uuid";
         NgIf
     ],
     templateUrl: './app.component.html',
+    providers: []
 })
 export class AppComponent {
     constructor() {}
