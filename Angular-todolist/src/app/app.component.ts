@@ -1,23 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoItemComponent } from './components/todo-items/todo.component';
 import { SearchItemComponent } from './components/search/search.component';
 import { NgFor, NgIf } from '@angular/common';
 import { TodoItemType } from '../types/todo.type';
 import { v4 as uuid } from "uuid";
+import { PrimeNG } from "primeng/config";
+import { InputTextModule } from "primeng/inputtext";
+import { FloatLabel } from 'primeng/floatlabel';
+import { IftaLabel } from 'primeng/iftalabel';
+import { ButtonModule } from 'primeng/button';
+import { LogoComponent } from './shareds/components/logo/logo.component';
 
 @Component({
     selector: 'app-root',
     imports: [
         TodoItemComponent,
         SearchItemComponent,
-        NgFor,
-        NgIf
+        LogoComponent,
+        InputTextModule,
+        FloatLabel,
+        IftaLabel,
+        ButtonModule
     ],
     templateUrl: './app.component.html',
     providers: []
 })
-export class AppComponent {
-    constructor() {}
+export class AppComponent implements OnInit {
+    constructor(
+      private primeNg: PrimeNG
+    ) {}
     protected TodoContents: string;
     protected TodoContentsTest: string;
     protected TodosList: Array<TodoItemType> = [
@@ -30,6 +41,10 @@ export class AppComponent {
             content: 'My name Bui The Anh',
         },
     ];
+
+    ngOnInit(): void {
+      // this.primeNg.ripple.set(true)
+    }
     
     OnContentsCreateChange(event: Event): void{
       const value = (event.target as HTMLInputElement).value;
