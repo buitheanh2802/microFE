@@ -26,13 +26,13 @@ export class TodoItemComponent implements AfterViewChecked {
     private ShouldFocus: boolean = false;
     protected IsEditing: boolean = false;
     ngAfterViewChecked(): void {
-       if(this.ShouldFocus && this.IsEditing){
-        // console.log(this.InputRef.nativeElement);
-        this.InputRef.nativeElement.focus();
-        this.ShouldFocus = false;
-       }
+        if (this.ShouldFocus && this.IsEditing) {
+            // console.log(this.InputRef.nativeElement);
+            this.InputRef.nativeElement.focus();
+            this.ShouldFocus = false;
+        }
     }
-    OnChange(event: Event): void{
+    OnChange(event: Event): void {
         const value = (event.target as HTMLInputElement).value;
         this.TodoItem.content = value;
     }

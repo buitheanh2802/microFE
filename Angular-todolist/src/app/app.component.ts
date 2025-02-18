@@ -10,6 +10,8 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { IftaLabel } from 'primeng/iftalabel';
 import { ButtonModule } from 'primeng/button';
 import { LogoComponent } from './shareds/components/logo/logo.component';
+import { TodosService } from './services/todos.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -18,46 +20,34 @@ import { LogoComponent } from './shareds/components/logo/logo.component';
         SearchItemComponent,
         LogoComponent,
         InputTextModule,
-        FloatLabel,
-        IftaLabel,
+        // FloatLabel,
+        // IftaLabel,
         ButtonModule
     ],
     templateUrl: './app.component.html',
-    providers: []
+    providers: [
+      // TodosService,
+      // HttpClient
+    ]
 })
 export class AppComponent implements OnInit {
     constructor(
-      private primeNg: PrimeNG
+      private TodoServices: TodosService
     ) {}
-    protected TodoContents: string;
-    protected TodoContentsTest: string;
-    protected TodosList: Array<TodoItemType> = [
-        {
-            id: '1',
-            content: 'Hello world',
-        },
-        {
-            id: '2',
-            content: 'My name Bui The Anh',
-        },
-    ];
 
     ngOnInit(): void {
-      // this.primeNg.ripple.set(true)
+      this.TodoServices.Gets().subscribe(value => {
+        console.log(value);
+      })
     }
     
     OnContentsCreateChange(event: Event): void{
       const value = (event.target as HTMLInputElement).value;
-      this.TodoContents = value;
+      // this.TodoContents = value;
     }
 
     OnCreateTodo(){
-      // console.log(this.TodoContents);
-      this.TodosList.push({
-        content: this.TodoContents,
-        id: uuid()
-      })
-      this.TodoContents = null;
+      
     }
 
     OnEditTodo(content: string){
