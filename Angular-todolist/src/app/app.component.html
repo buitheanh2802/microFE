@@ -1,35 +1,39 @@
 <div class="w-[500px] flex items-center justify-center">
     <div class="bg-white border border-gray-300 rounded p-6 m-4 w-full">
         <div class="border-b pb-[10px] mb-[20px] border-gray-300">
-            <h1 class="text-grey-darkest w-[200px]">
-                <app-logo></app-logo>
+            <h1 class="text-grey-darkest w-[200px] mb-[10px]">
+                <!-- <app-logo></app-logo> -->
             </h1>
             <search-item />
-            <div class="flex flex-col mt-4">
+            <form
+                [formGroup]="TodoFormsData"
+                (ngSubmit)="OnSubmit()"
+                class="flex flex-col">
                 <input
-                    [(ngModel)]="TodoModel.name"
-                    class="w-full block mb-[10px] "
+                    ngClass="hello"
+                    class="w-full block mb-[10px]"
                     pSize="small"
                     aria-describedby="username-help"
                     pInputText
                     autocomplete="off"
+                    formControlName="name"
                     placeholder="Title...." />
-                <input
-                    [(ngModel)]="TodoModel.name"
-                    class="w-full block mb-[10px] "
+                <textarea
                     pSize="small"
-                    aria-describedby="username-help"
-                    pInputText
-                    autocomplete="off"
-                    placeholder="Descriptions...." />
+                    class="w-full block mb-[10px]"
+                    pTextarea
+                    rows="3"
+                    autoResize="true"
+                    placeholder="Descriptions...."></textarea>
                 <button
+                    type="submit"
+                    size="small"
                     class=""
-                    (click)="OnCreateNewTodo()"
                     pButton
                     severity="primary">
                     <span pButtonLabel>Submit</span>
                 </button>
-            </div>
+            </form>
         </div>
         <todo-item
             *ngFor="let item of TodosList; let i = index"
