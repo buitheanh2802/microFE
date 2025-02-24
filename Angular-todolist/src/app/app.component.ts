@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TodoItemComponent } from './components/todo-items/todo.component';
 import { SearchItemComponent } from './components/search/search.component';
 import { NgFor, NgIf } from '@angular/common';
-import { TodoItemType } from '../types/todo.type';
 import { v4 as uuid } from "uuid";
 import { PrimeNG } from "primeng/config";
 import { InputTextModule } from "primeng/inputtext";
@@ -12,6 +11,9 @@ import { ButtonModule } from 'primeng/button';
 import { LogoComponent } from './shareds/components/logo/logo.component';
 import { TodosService } from './services/todos.service';
 import { HttpClient } from '@angular/common/http';
+import { TodoResponseType } from 'types/response.type';
+import { TodoRequestParams } from 'types/request.type';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-root',
@@ -20,38 +22,55 @@ import { HttpClient } from '@angular/common/http';
         SearchItemComponent,
         LogoComponent,
         InputTextModule,
-        // FloatLabel,
-        // IftaLabel,
-        ButtonModule
+        ButtonModule,
+        NgFor,
+        FormsModule
     ],
     templateUrl: './app.component.html',
-    providers: [
-      // TodosService,
-      // HttpClient
-    ]
+    providers: []
 })
 export class AppComponent implements OnInit {
+
     constructor(
-      private TodoServices: TodosService
+      private TodoServices: TodosService  
     ) {}
+    protected IsFetching: boolean = false;
+    protected TodoModel: TodoResponseType = {
+      checked: false,
+      createdAt: "",
+      descriptions: "",
+      id: "",
+      name: ""
+    };
+    protected TodosList: Array<TodoResponseType> = [];
+    private TodosListRequestParams: TodoRequestParams = {
+      limit: 3,
+      page: 1
+    }
 
     ngOnInit(): void {
-      this.TodoServices.Gets().subscribe(value => {
-        console.log(value);
-      })
-    }
-    
-    OnContentsCreateChange(event: Event): void{
-      const value = (event.target as HTMLInputElement).value;
-      // this.TodoContents = value;
+      this.IsFetching = true;
+      this.TodoServices.Gets(this.TodosListRequestParams).subscribe({
+        next: (response) => {
+           this.TodosList = response;
+           this.IsFetching = false;
+        },
+        error: (err) => {
+          console.log("Error: ",err);
+          this.IsFetching = false;
+        },
+      });
     }
 
-    OnCreateTodo(){
-      
-    }
-
-    OnEditTodo(content: string){
-      console.log(content);
+    protected OnCreateNewTodo(){
+       this.TodoServices.Post(this.TodoModel).subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (err) => {
+          console.log("Error: ",err);
+        }
+       })
     }
 
 }
