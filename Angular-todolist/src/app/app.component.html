@@ -1,19 +1,39 @@
 <div class="w-[500px] flex items-center justify-center">
     <div class="bg-white border border-gray-300 rounded p-6 m-4 w-full">
-        <div class="mb-4">
+        <div class="border-b pb-[10px] mb-[20px] border-gray-300">
             <h1 class="text-grey-darkest w-[200px]">
-                <!-- <app-logo></app-logo> -->
+                <app-logo></app-logo>
             </h1>
             <search-item />
-            <div class="flex mt-4">
-                <input class="w-full block mr-[10px]" pSize="small" aria-describedby="username-help" pInputText autocomplete="off" 
-                placeholder="Create new...." />
-                <button pButton severity="primary">
+            <div class="flex flex-col mt-4">
+                <input
+                    [(ngModel)]="TodoModel.name"
+                    class="w-full block mb-[10px] "
+                    pSize="small"
+                    aria-describedby="username-help"
+                    pInputText
+                    autocomplete="off"
+                    placeholder="Title...." />
+                <input
+                    [(ngModel)]="TodoModel.name"
+                    class="w-full block mb-[10px] "
+                    pSize="small"
+                    aria-describedby="username-help"
+                    pInputText
+                    autocomplete="off"
+                    placeholder="Descriptions...." />
+                <button
+                    class=""
+                    (click)="OnCreateNewTodo()"
+                    pButton
+                    severity="primary">
                     <span pButtonLabel>Submit</span>
                 </button>
             </div>
         </div>
-        <todo-item *ngFor="let item of TodosList; let i=index" [TodoItem]="item" />
+        <todo-item
+            *ngFor="let item of TodosList; let i = index"
+            [TodoItem]="item" />
         <!-- <ng-container >hello world</ng-container> -->
     </div>
 </div>
